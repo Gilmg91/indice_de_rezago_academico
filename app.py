@@ -10,7 +10,7 @@ import ira
 
 st.set_page_config(page_title="Predicción del IRA", page_icon="📊", layout="centered")
 
-st.logo("logo.png")
+st.image("logo.png", width=180)
 
 @st.cache_resource                       # el modelo se carga una sola vez, no en cada clic
 def cargar():
