@@ -51,7 +51,7 @@ def num_float(col, etiqueta, donde):
 # ---------- Encabezado ----------
 st.title("Predicción del índice IRA")
 st.write("Ingrese los datos de un estudiante y el modelo estima su **IRA_SCORE**. "
-         f"Modelo: {paquete['nombre']} (Random Forest) entrenado con 12.431 registros de los periodos 202520 a 202610.")
+         f"Modelo: {paquete['nombre']} (Random Forest)")
 
 if sklearn.__version__ != paquete["sklearn"]:
     st.warning(f"El modelo se guardó con scikit-learn {paquete['sklearn']} y esta app usa "
@@ -127,11 +127,3 @@ if enviar:
         "Niveles de referencia según la distribución del IRA en los datos: Bajo (menos de 0.08), "
         "Medio (0.08 a 0.15) y Alto (0.15 o más); no son umbrales oficiales. "
         "El modelo tiende a subestimar los IRA altos.")
-
-with st.expander("¿Por qué los valores del IRA son tan bajos?"):
-    st.write(
-        f"En los datos con que se entrenó el modelo, el IRA está muy concentrado cerca de 0: el promedio es "
-        f"{ref['ira_media']:.3f}, la mitad de los registros está por debajo de {ref['percentiles_ira'][50]:.3f} y solo el 5% "
-        f"supera {ref['percentiles_ira'][95]:.2f}. Por eso, incluso un caso de alto riesgo recibe una predicción "
-        "de 0.2 a 0.4: es varias veces el promedio, aunque en una escala de 0 a 1 parezca pequeño. "
-        "El modelo no extrapola más allá de lo que se observó en los datos.")
